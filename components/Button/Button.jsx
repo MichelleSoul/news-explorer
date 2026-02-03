@@ -8,7 +8,7 @@ export default function Button({
   variant = "blue",
   className
 }) {
-  const baseClasses = "w-full h-16 rounded-full font-inter font-semibold text-base transition-colors duration-200 focus:outline-none";
+  const baseClasses = "w-full h-16 rounded-full font-inter font-medium text-lg transition-colors duration-300 focus:outline-none";
 
   const variantClasses = () => {
     if (disabled) {
@@ -22,6 +22,8 @@ export default function Button({
         return "bg-white text-black hover:bg-[#D3D3D3] active:bg-[#D3D3D3] border-none";
       case "outline":
         return "bg-transparent text-white border border-white hover:bg-white/10 active:bg-white/20";
+      case "outline-dark":
+        return "bg-transparent text-black border border-black hover:bg-white/10 active:bg-white/20";
       default:
         return "bg-[#2F71E5] shadow-xl text-white hover:bg-[#347EFF] active:bg-[#2A65CC] border-none";
     }
