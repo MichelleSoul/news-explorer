@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import SignUpModal from '../components/Modal/SignUpModal';
 import Hero from '../components/Button/Hero/Hero';
 import Author from '../components/Author/Author';
+import Footer from '../components/Footer/Footer';
 
 function App() {
     const [open, setOpen] = useState(false);
@@ -14,6 +15,7 @@ function App() {
             <SignUpModal isOpen={open} onClose={() => setOpen(false)} />
             <Hero />
             <Author />
+            <Footer />
         </>
     )
 }
