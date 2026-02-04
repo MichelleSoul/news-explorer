@@ -73,9 +73,9 @@ export default function Header({ variant }) {
                 <header
                     className={cn(
                         `
-                            relative z-50
+                            fixed z-50 backdrop-blur-xs
                             flex items-center justify-between
-                            h-14 px-4
+                            w-full h-14 px-4
                             border-b border-white/20
                             md:h-16.5 md:px-10
                             lg:h-20 lg:px-26
