@@ -6,6 +6,7 @@ import Hero from '../components/Hero/Hero';
 import Author from '../components/Author/Author';
 import Footer from '../components/Footer/Footer';
 import SearchResults from '../components/SearchResults/SearchResults';
+import SearchLoad from '../components/SearchLoad/SearchLoad';
 
 function App() {
     const [open, setOpen] = useState(false);
@@ -15,7 +16,7 @@ function App() {
             <Header />
             <SignUpModal isOpen={open} onClose={() => setOpen(false)} />
             <Hero />
-            <SearchResults />
+            <SearchLoad />
             <Author />
             <Footer />
         </>
