@@ -1,14 +1,13 @@
-import { cn } from "../../src/lib/cn";
+import { cn } from "@/lib/cn";
 import Button from "../Button/Button";
 import MenuIcon from "../Icon/MenuIcon";
 import LogoutIcon from "../Icon/LogoutIcon"
-import CloseIcon from "../../src/assets/icons/close.svg";
 import { useState } from "react";
 
 export default function Header({ variant }) {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isSignedIn, setIsSignedIn] = useState(false);
-    const [route, setRoute] = useState("home");
+    const [isSignedIn, _setIsSignedIn] = useState(false);
+    const [route, _setRoute] = useState("home");
 
     const headerBgClass = cn(
         // mobile behavior
@@ -78,10 +77,10 @@ export default function Header({ variant }) {
                             flex items-center justify-between
                             h-14 px-4
                             border-b border-white/20
-                            md:h-20 md:px-10
-                            lg:px-26
+                            md:h-16.5 md:px-10
+                            lg:h-20 lg:px-26
                             transition-colors duration-300
-                            `,
+                        `,
                         variant === "white" ? "border-[#d1d2d6]" : "border-white/20",
                         headerBgClass
                     )}
@@ -113,7 +112,7 @@ export default function Header({ variant }) {
                         <Button
                             variant={navButtonVariant(variant)}
                             className={cn(
-                                "font-roboto h-12 flex items-center justify-center",
+                                "font-roboto h-10 lg:h-12 flex items-center justify-center",
                                 isSignedIn ? "w-fit px-5 gap-3.75" : "w-44"
                             )}
                         >

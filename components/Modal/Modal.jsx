@@ -1,4 +1,4 @@
-import CloseIcon from "../../src/assets/icons/close.svg";
+import CloseIcon from "@/assets/icons/close.svg";
 
 export default function Modal({ isOpen, onClose, children }) {
     if (!isOpen) return null;

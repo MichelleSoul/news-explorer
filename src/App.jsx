@@ -2,15 +2,16 @@ import './App.css'
 import { useState } from "react";
 import Header from '../components/Header/Header';
 import SignUpModal from '../components/Modal/SignUpModal';
+import Hero from '../components/Button/Hero/Hero';
 
 function App() {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <Header variant="" />
+            <Header />
             <SignUpModal isOpen={open} onClose={() => setOpen(false)} />
-            <div className='bg-gray-500 w-full h-screen -translate-y-20'></div>
+            <Hero />
         </>
     )
 }

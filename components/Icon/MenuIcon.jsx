@@ -1,4 +1,4 @@
-import { cn } from "../../src/lib/cn";
+import { cn } from "@/lib/cn";
 
 export default function MenuIcon({ open, variant }) {
   const fillClass = variant === "dark" ? "fill-[#1A1B22]" : "fill-white";

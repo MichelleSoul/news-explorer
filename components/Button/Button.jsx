@@ -1,4 +1,4 @@
-import { cn } from "../../src/lib/cn"
+import { cn } from "@/lib/cn";
 
 export default function Button({
   children,
