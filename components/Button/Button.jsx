@@ -8,7 +8,7 @@ export default function Button({
   variant = "blue",
   className
 }) {
-  const baseClasses = "w-full h-16 rounded-full font-inter font-medium text-lg transition-colors duration-300 focus:outline-none";
+  const baseClasses = "block w-full h-16 rounded-full font-inter font-medium text-lg transition-colors duration-300 focus:outline-none";
 
   const variantClasses = () => {
     if (disabled) {

@@ -80,6 +80,16 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Source Sans Pro";
+  src:
+    url("./assets/fonts/source-sans-3-latin-400-normal.woff2") format("woff2"),
+    url("./assets/fonts/source-sans-3-latin-400-normal.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer utilities {
   .font-roboto {
     font-family: Roboto, sans-serif;
@@ -87,6 +97,10 @@
 
   .font-inter {
     font-family: Inter, sans-serif;
+  }
+
+  .font-sanspro {
+    font-family: "Source Sans Pro", sans-serif;
   }
 
   .font-slab {

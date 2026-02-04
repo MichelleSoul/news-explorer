@@ -18,15 +18,7 @@ export default function Modal({ isOpen, onClose, children }) {
                 {/* Close button */}
                 <button
                     onClick={onClose}
-                    className="
-                        absolute
-                        -top-10
-                        right-4
-                        z-10
-
-                        md:-right-7.5
-                        md:-top-7.5
-                    "
+                    className="absolute -top-10 right-4 z-10 md:-right-7.5 md:-top-7.5"
                     aria-label="Close modal"
                 >
                     <img src={CloseIcon} alt="Close" className="h-6 w-6" />
