@@ -16,7 +16,7 @@ export default function SignInModal({ isOpen, onClose }) {
 
                 console.log("Submit:", { email, password });
             }}>
-                <div className="mb-7.5">
+                <div className="mb-3.25">
                     <label
                         htmlFor="email"
                         className="font-inter text-xs font-normal text-[#2F71E5]"
@@ -31,6 +31,7 @@ export default function SignInModal({ isOpen, onClose }) {
                         className="w-full bg-transparent border-0 border-b border-black/20 px-0 py-2 font-inter text-sm outline-none focus:border-[#2F71E5]"
                         required
                     />
+                    <p className="font-inter text-xs text-[red] mt-1.5">Invalid email address</p>
                 </div>
                 <div className="mb-9.75">
                     <label

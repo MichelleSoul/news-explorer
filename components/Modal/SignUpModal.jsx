@@ -42,12 +42,13 @@ export default function SignUpModal({ isOpen, onClose }) {
                     <input
                         id="password"
                         type="password"
+                        autoComplete="current-password"
                         placeholder="Enter password"
                         className="w-full bg-transparent border-0 border-b border-black/20 px-0 py-2 font-inter text-sm outline-none focus:border-[#2F71E5]"
                         required
                     />
                 </div>
-                <div className="mb-9.75">
+                <div className="mb-4.25">
                     <label
                         htmlFor="username"
                         className="font-inter text-xs font-normal text-[#2F71E5]"
@@ -62,6 +63,7 @@ export default function SignUpModal({ isOpen, onClose }) {
                         required
                     />
                 </div>
+                <p className="font-inter text-xs text-[red] text-center mb-2">Invalid email address</p>
                 <Button type="submit" className="mb-4" disabled >Sign Up</Button>
                 <div className="text-center font-inter text-sm text-black">
                     or{" "}

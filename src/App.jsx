@@ -10,7 +10,7 @@ import SearchLoad from '../components/SearchLoad/SearchLoad';
 import SavedNews from '../components/SavedNews/SavedNews';
 
 function App() {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     return (
         <>
