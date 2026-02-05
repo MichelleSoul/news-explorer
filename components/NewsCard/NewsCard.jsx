@@ -8,12 +8,17 @@ export default function NewsCard({ image, tag, date, headlines, description, sou
         <div className="
             relative w-72 mx-auto bg-white rounded-2xl overflow-hidden
             hover:shadow-lg transition-shadow duration-300
-            md:w-56 lg:w-66 xl:w-87 2xl:w-100
+            md:w-56 lg:w-66 xl:w-fit 2xl:w-108
         ">
             {/* Feature Image */}
-            <div
-                className="w-full h-49 bg-gray-300 bg-cover bg-center md:h-37.5 xl:h-68"
-                style={{ backgroundImage: `url(${image})` }}
+            <img
+                src={image}
+                alt={description}
+                className="
+                    w-full
+                    h-49 md:h-37.5 xl:h-68
+                    object-cover object-center
+                "
             />
             {/* Tag */}
             {

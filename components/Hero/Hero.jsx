@@ -11,7 +11,8 @@ export default function Hero() {
                     md:flex md:flex-col md:items-center
                     md:pt-26 md:pb-12
                     lg:pt-40 lg:pb-20
-                " style={{ backgroundImage: `url(${HeroImage})` }}>
+                " style={{ backgroundImage: `url(${HeroImage})`
+            }}>
                 <h1 className="font-slab text-4xl text-white mb-4 md:w-113 lg:w-152 lg:mb-8">What's going on in the world?</h1>
                 <p className="font-roboto text-lg text-white mb-30.5 md:w-113 lg:w-152">Find the latest news on any topic and save them in your personal account.</p>
                 <form className="relative md:w-113 lg:w-152"

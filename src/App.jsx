@@ -7,17 +7,16 @@ import Author from '../components/Author/Author';
 import Footer from '../components/Footer/Footer';
 import SearchResults from '../components/SearchResults/SearchResults';
 import SearchLoad from '../components/SearchLoad/SearchLoad';
+import SavedNews from '../components/SavedNews/SavedNews';
 
 function App() {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <Header />
+            <Header variant="white" />
             <SignUpModal isOpen={open} onClose={() => setOpen(false)} />
-            <Hero />
-            <SearchLoad />
-            <Author />
+            <SavedNews />
             <Footer />
         </>
     )

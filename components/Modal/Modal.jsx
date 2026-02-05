@@ -1,19 +1,32 @@
 import CloseIcon from "@/assets/icons/close.svg";
+import { cn } from "@/lib/cn";
 
 export default function Modal({ isOpen, onClose, children }) {
-    if (!isOpen) return null;
-
     return (
-        <div className="fixed inset-0 z-50 flex md:items-center md:justify-center">
+        <div
+            className={cn(
+                "fixed inset-0 z-50 flex md:items-center md:justify-center",
+                isOpen ? "pointer-events-auto" : "pointer-events-none"
+            )}
+        >
             {/* Overlay */}
             <div
-                className="absolute inset-0 bg-black/50"
+                className={cn(
+                    "absolute inset-0 bg-black/50 transition-opacity duration-300",
+                    isOpen ? "opacity-100" : "opacity-0"
+                )}
                 onClick={onClose}
             />
 
-            {/* Modal container wrapper */}
+            {/* Modal wrapper */}
             <div
-                className="absolute top-14 bottom-0 left-0 right-0 md:relative md:w-107.5"
+                className={cn(
+                    "absolute top-14 bottom-0 left-0 right-0 md:relative md:w-107.5",
+                    "transition-all duration-300 ease-out",
+                    isOpen
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-6"
+                )}
             >
                 {/* Close button */}
                 <button
@@ -29,6 +42,6 @@ export default function Modal({ isOpen, onClose, children }) {
                     {children}
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
