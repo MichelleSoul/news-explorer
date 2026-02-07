@@ -1,0 +1,1523 @@
+{
+  "info": {
+    "_postman_id": "97283cc0-aaa1-4541-8c7e-ab7403b2ee28",
+    "name": "NewsExplorer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "887928"
+  },
+  "item": [
+    {
+      "name": "signup",
+      "item": [
+        {
+          "name": "✅ Register a new user",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"JohnDoe\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Email missing",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"JohnDoe\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Password missing",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"username\": \"JohnDoe\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Username missing",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Username too short (< 2 char)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"a\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Username too long (< 30 char)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"ThisUsernameIsWayTooLongForTheApplicationToAccept\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Test create new user for duplicate conflict",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"duplicate@example.com\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"FirstUser\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Register with existing email",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"duplicate@example.com\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"FirstUser\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid email format",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"notanemail\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"JohnDoe\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "signin",
+      "item": [
+        {
+          "name": "✅ Sign in registered user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response.token) {\r",
+                  "    pm.collectionVariables.set(\"jwt_token\", response.token);\r",
+                  "    console.log(\"JWT token updated in collection variables\");\r",
+                  "} else {\r",
+                  "    console.warn(\"No token found in response\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Email missing",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Password missing",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid email format",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"notanemail\",\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Email doesnt exist",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"nonexistent@example.com\",\r\n  \"password\": \"somePassword\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Wrong password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"wrongPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "✅ Get user data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ No Auth Header",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid/Expired token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "invalidtoken",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Incorrect Auth Header",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "headerPrefix",
+                  "value": "InvalidFormat",
+                  "type": "string"
+                },
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "saved-news",
+      "item": [
+        {
+          "name": "✅ Save news article",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=123456\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Reaches New All-Time High\",\r\n  \"description\": \"Bitcoin has reached a new all-time high price as investors continue to show strong interest\",\r\n  \"source\": \"CryptoCurrency News\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ URL missing",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid URL format",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"notavalidurl\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Tag missing",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Tag is empty",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin\",\r\n  \"tag\": \"\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Tag too long (> 50 char)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin\",\r\n  \"tag\": \"ThisIsAnExtremelyLongTagThatExceedsTheMaximumAllowedCharacterLimit\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Image URL missing",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid Image URL format",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"notavalidurl\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Article\",\r\n  \"description\": \"About bitcoin\",\r\n  \"source\": \"News Source\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Save duplicate news article",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=123456\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Reaches New All-Time High\",\r\n  \"description\": \"Bitcoin has reached a new all-time high price as investors continue to show strong interest\",\r\n  \"source\": \"CryptoCurrency News\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ No Auth Header",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=123456\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Reaches New All-Time High\",\r\n  \"description\": \"Bitcoin has reached a new all-time high price as investors continue to show strong interest\",\r\n  \"source\": \"CryptoCurrency News\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid/Expired token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "invalidtoken123",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=123456\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Reaches New All-Time High\",\r\n  \"description\": \"Bitcoin has reached a new all-time high price as investors continue to show strong interest\",\r\n  \"source\": \"CryptoCurrency News\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "✅ Get saved news article",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ No Auth Header",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid/Expired token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "invalidtoken123",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Register a new user to test empty result",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser2@example.com\",\r\n  \"password\": \"myPassword123\",\r\n  \"username\": \"JohnDoeII\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Sign in to new user to test empty result",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response.token) {\r",
+                  "    pm.collectionVariables.set(\"jwt_token\", response.token);\r",
+                  "    console.log(\"JWT token updated in collection variables\");\r",
+                  "} else {\r",
+                  "    console.warn(\"No token found in response\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser2@example.com\",\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "✅ Get saved news (empty)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Sign in first user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response.token) {\r",
+                  "    pm.collectionVariables.set(\"jwt_token\", response.token);\r",
+                  "    console.log(\"JWT token updated in collection variables\");\r",
+                  "} else {\r",
+                  "    console.warn(\"No token found in response\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Save news article to test deletion Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response && response._id) {\r",
+                  "    pm.collectionVariables.set(\"test_delete_news_id\", response._id);\r",
+                  "    console.log(\"Saved delete ID:\", response._id);\r",
+                  "} else {\r",
+                  "    console.warn(\"No _id found in response\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=234567\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Reaches New All-Time High... Again\",\r\n  \"description\": \"Bitcoin has reached a new all-time high price as investors continue to show strong interest\",\r\n  \"source\": \"CryptoCurrency News\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Get saved news before deletion Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "✅ Delete news article",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news/{{test_delete_news_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news",
+                "{{test_delete_news_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Get saved news after deletion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid ID format",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news/invalidid",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news",
+                "invalidid"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Article ID doesnt exist Copy",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news/{{test_delete_news_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news",
+                "{{test_delete_news_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ No Auth Header",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news/{{test_delete_news_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news",
+                "{{test_delete_news_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Invalid/Expired token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "invalidtoken",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news/{{test_delete_news_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news",
+                "{{test_delete_news_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Save to test deletion by different user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response && response._id) {\r",
+                  "    pm.collectionVariables.set(\"test_delete_news_id\", response._id);\r",
+                  "    console.log(\"Saved delete ID:\", response._id);\r",
+                  "} else {\r",
+                  "    console.warn(\"No _id found in response\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=234567\",\r\n  \"tag\": \"cryptocurrency\",\r\n  \"image\": \"https://example.com/bitcoin-image.jpg\",\r\n  \"date\": \"2024-02-07T15:30:00Z\",\r\n  \"title\": \"Bitcoin Reaches New All-Time High... Again\",\r\n  \"description\": \"Bitcoin has reached a new all-time high price as investors continue to show strong interest\",\r\n  \"source\": \"CryptoCurrency News\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Show saved news of first user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/saved-news",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❇️ Sign in to second user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response.token) {\r",
+                  "    pm.collectionVariables.set(\"jwt_token\", response.token);\r",
+                  "    console.log(\"JWT token updated in collection variables\");\r",
+                  "} else {\r",
+                  "    console.warn(\"No token found in response\");\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"newuser2@example.com\",\r\n  \"password\": \"myPassword123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "❎ Delete saved news of first user",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/saved-news/{{test_delete_news_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "saved-news",
+                "{{test_delete_news_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "jwt_token",
+      "value": ""
+    },
+    {
+      "key": "test_delete_news_id",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
