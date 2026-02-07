@@ -84,11 +84,11 @@ export default function SavedNews({ setHeader, setRoute }) {
                             image={article.image}
                             tag={article.tag}
                             date={article.date}
-                            headlines={article.headlines}
+                            title={article.headlines}
                             description={article.description}
                             source={article.source}
                             variant="saved"
-                            isSignedIn
+                            isLoggedIn
                         />
                     ))}
                 </div>

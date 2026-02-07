@@ -1,11 +1,23 @@
 import Hero from '../components/Hero/Hero';
 import Author from '../components/Author/Author';
 import SearchResults from '../components/SearchResults/SearchResults';
-import SearchLoad from '../components/SearchLoad/SearchLoad';
-import SearchFail from '../components/SearchFail/SearchFail';
 import { useEffect, useRef } from 'react'
 
-export default function Home({ setHeader, setRoute }) {
+export default function Home({ 
+    setHeader, 
+    setRoute, 
+    onSearch,
+    articles,
+    isLoading,
+    error,
+    hasSearched,
+    visibleCount,
+    onShowMore,
+    isLoggedIn,
+    savedArticles,
+    onSave,
+    onDelete,
+}) {
     const heroRef = useRef(null)
 
     useEffect(() => {
@@ -36,10 +48,19 @@ export default function Home({ setHeader, setRoute }) {
 
     return (
         <>
-            <Hero ref={heroRef} />
-            <SearchLoad />
-            <SearchFail />
-            <SearchResults />
+            <Hero ref={heroRef} onSearch={onSearch} error={error} />
+            <SearchResults 
+                articles={articles}
+                visibleCount={visibleCount}
+                onShowMore={onShowMore}
+                hasSearched={hasSearched}
+                isLoading={isLoading}
+                error={error}
+                isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+                onSave={onSave}
+                onDelete={onDelete}
+            />
             <Author />
         </>
     )

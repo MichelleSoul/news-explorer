@@ -7,8 +7,8 @@ import BookmarkIcon from "../Icon/BookmarkIcon";
 export default function CardsAction({
     variant,        // "search" | "saved"
     bookmarked,     // boolean
-    onToggle,
-    isSignedIn,
+    onToggle,       // function to call on click
+    isLoggedIn,     // boolean
 }) {
     const [hovered, setHovered] = useState(false);
 
@@ -22,7 +22,12 @@ export default function CardsAction({
 
     const handleClick = () => {
         if (variant === "search") {
-            onToggle?.(!bookmarked);
+            if (isLoggedIn) {
+                onToggle();
+            }
+            // If not logged in, the tooltip will show instead
+        } else if (variant === "saved") {
+            onToggle();
         }
     };
 
@@ -41,7 +46,7 @@ export default function CardsAction({
                     opacity-0
                 `,
                 // show search variant tooltip only when logged out
-                variant === "search" && !isSignedIn && hovered && "opacity-100",
+                variant === "search" && !isLoggedIn && hovered && "opacity-100",
 
                 // show saved variant (user is logged in)
                 variant === "saved" && hovered && "opacity-100"
@@ -50,12 +55,7 @@ export default function CardsAction({
             </div>
             <button
                 onClick={handleClick}
-                className="
-                flex items-center justify-center
-                w-10 h-10 rounded-xl
-                bg-white
-                transition-colors duration-300
-            "
+                className="flex items-center justify-center w-10 h-10 rounded-xl bg-white transition-colors duration-300"
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
                 aria-pressed={bookmarked}

@@ -5,9 +5,8 @@ import LogoutIcon from "../Icon/LogoutIcon"
 import { useState } from "react";
 import { NavLink } from 'react-router-dom'
 
-export default function Header({ variant, route }) {
+export default function Header({ variant, route, isLoggedIn = false, onSignIn = () => {}, onLogout = () => {} }) {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isSignedIn, _setIsSignedIn] = useState(false);
 
     const headerBgClass = cn(
         // mobile behavior
@@ -104,7 +103,7 @@ export default function Header({ variant, route }) {
                             Home
                         </NavLink>
                         {/* Saved articles */}
-                        {isSignedIn && (
+                        {isLoggedIn && (
                             <NavLink to="/saved-news" className={cn(navItemBase(variant), "w-44.5", route === "saved" && activeUnderline(variant))}>
                                 Saved articles
                             </NavLink>
@@ -113,10 +112,11 @@ export default function Header({ variant, route }) {
                             variant={navButtonVariant(variant)}
                             className={cn(
                                 "font-roboto h-10 lg:h-12 flex items-center justify-center",
-                                isSignedIn ? "w-fit px-5 gap-3.75" : "w-44"
+                                isLoggedIn ? "w-fit px-5 gap-3.75" : "w-44"
                             )}
+                            onClick={isLoggedIn ? onLogout : onSignIn}
                         >
-                            {isSignedIn ? (
+                            {isLoggedIn ? (
                                 <>
                                     Elise
                                     <LogoutIcon variant={navButtonIconVariant(variant)} />
@@ -135,8 +135,8 @@ export default function Header({ variant, route }) {
                     )}
                 >
                     <div className="font-roboto font-medium text-white h-14 flex items-center">Home</div>
-                    <Button variant="outline" className="font-roboto flex items-center justify-center gap-3.75" >
-                        {isSignedIn ? (
+                    <Button variant="outline" className="font-roboto flex items-center justify-center gap-3.75" onClick={isLoggedIn ? onLogout : onSignIn}>
+                        {isLoggedIn ? (
                             <>
                                 Elise
                                 <LogoutIcon variant="white" />

@@ -1,8 +1,30 @@
 import { useState } from "react";
 import CardsAction from "./CardsAction.jsx";
 
-export default function NewsCard({ image, tag, date, headlines, description, source, variant, isSignedIn }) {
-    const [bookmarked, setBookmarked] = useState(false);
+export default function NewsCard({
+    article,
+    image,
+    date,
+    title,
+    description,
+    source,
+    variant,
+    isLoggedIn,
+    isSaved = false,
+    onSave = () => {},
+    onDelete = () => {},
+}) {
+    const [bookmarked, setBookmarked] = useState(isSaved);
+
+    const handleToggle = () => {
+        if (bookmarked) {
+            onDelete(article);
+            setBookmarked(false);
+        } else {
+            onSave(article);
+            setBookmarked(true);
+        }
+    };
 
     return (
         <div className="
@@ -20,23 +42,6 @@ export default function NewsCard({ image, tag, date, headlines, description, sou
                     object-cover object-center
                 "
             />
-            {/* Tag */}
-            {
-                variant === "saved" &&
-                <div className="
-                    absolute top-4 left-4
-                    rounded-xl
-                    flex items-center justify-center
-                    w-fit h-10 px-5
-                    bg-white font-roboto font-medium text-sm
-
-                    md:top-2 md:left-2
-                    lg:top-4 lg:left-4
-                    xl:top-6 xl:left-6
-                ">
-                    {tag}
-                </div>
-            }
             {/* Action Button */}
             <div className="
                 absolute top-4 right-4
@@ -50,14 +55,14 @@ export default function NewsCard({ image, tag, date, headlines, description, sou
                 <CardsAction
                     variant={variant}
                     bookmarked={bookmarked}
-                    onToggle={setBookmarked}
-                    isSignedIn={isSignedIn}
+                    onToggle={handleToggle}
+                    isLoggedIn={isLoggedIn}
                 />
             </div>
             {/* News */}
             <div className="h-61 p-4 flex flex-col md:h-67.5 xl:h-76 xl:p-6">
                 <p className="font-sanspro text-lg text-[#B6BCBF] mb-2.5 md:pt-1 xl:pt-0" >{date}</p>
-                <h2 className="font-slab text-[22px] text-[#1A1B22] leading-5.5 line-clamp-2 md:line-clamp-3 xl:leading-7.5 2xl:text-[26px]" >{headlines}</h2>
+                <h2 className="font-slab text-[22px] text-[#1A1B22] leading-5.5 line-clamp-2 md:line-clamp-3 xl:leading-7.5 xl:line-clamp-2 2xl:text-[26px]" >{title}</h2>
                 <p className="
                     absolute top-77 left-4 right-4
                     font-roboto text-base text-[#1A1B22]

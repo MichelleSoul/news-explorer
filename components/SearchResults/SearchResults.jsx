@@ -1,64 +1,58 @@
 import Button from "../Button/Button";
 import NewsCard from "../NewsCard/NewsCard";
-import Image1 from "@/assets/images/news/image_08.png";
-import Image2 from "@/assets/images/news/image_06.png";
-import Image3 from "@/assets/images/news/image_05.png";
-import Image4 from "@/assets/images/news/image_07.png";
-import Image5 from "@/assets/images/news/image_01.png";
+import SearchLoad from "../SearchLoad/SearchLoad";
+import SearchFail from "../SearchFail/SearchFail";
+import { formatDate } from "@/utils/newsApi";
 
-export default function SearchResults({ isSignedIn = false }) {
-    const newsArticles = [
-        {
-            id: 1,
-            image: Image1,
-            tag: "Nature",
-            date: "November 4, 2020",
-            headlines: "Everyone Needs a Special 'Sit Spot' in Nature",
-            description:
-                "Ever since I read Richard Louv's influential book, \"Last Child in the Woods,\" the idea of having a special \"sit spot\" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find...",
-            source: "Treehugger",
-        },
-        {
-            id: 2,
-            image: Image2,
-            tag: "Nature",
-            date: "February 19, 2019",
-            headlines: "Nature makes you better",
-            description:
-                "We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.",
-            source: "National Geographic",
-        },
-        // {
-        //     id: 3,
-        //     image: Image3,
-        //     tag: "Yellowstone",
-        //     date: "November 4, 2020",
-        //     headlines: "Nostalgic Photos of Tourists in U.S. National Parks",
-        //     description:
-        //         "Uri Løvevild Golman and Helle Løvevild Golman are National Geographic Explorers and conservation photographers who just completed a project and book they call their love letter to...",
-        //     source: "National Geographic",
-        // },
-        {
-            id: 4,
-            image: Image4,
-            tag: "Parks",
-            date: "November 4, 2020",
-            headlines: "Grand Teton Renews Historic Crest Trail",
-            description:
-                "\"The linking together of the Cascade and Death Canyon trails, at their heads, took place on October 1, 1933, and marked the first step in the realization of a plan whereby the hiker will be...",
-            source: "National Parks Traveler",
-        },
-        // {
-        //     id: 5,
-        //     image: Image5,
-        //     tag: "Photography",
-        //     date: "November 4, 2020",
-        //     headlines: "Scientists Don't Know Why Polaris Is So Weird ",
-        //     description:
-        //         "Humans have long relied on the starry sky to push into new frontiers, sail to the very edge of the world and find their way back home again. Even animals look to the stars to guide them.",
-        //     source: "Treehugger",
-        // },
-    ];
+export default function SearchResults({
+    articles = [],
+    visibleCount = 3,
+    onShowMore = () => {},
+    hasSearched = false,
+    isLoading = false,
+    error = "",
+    isLoggedIn = false,
+    savedArticles = [],
+    onSave = () => {},
+    onDelete = () => {},
+}) {
+    // Don't render anything if user hasn't searched
+    if (!hasSearched) {
+        return null;
+    }
+
+    // Show loading state
+    if (isLoading) {
+        return (
+            <div className="bg-[#F5F6F7] pt-8 pb-6 px-4 md:p-10 lg:px-26 py-20">
+                <h1 className="font-slab text-3xl mb-4 w-72 md:mb-8 lg:mb-16">Search results</h1>
+                <SearchLoad />
+            </div>
+        );
+    }
+
+    // Show error state
+    if (error) {
+        return (
+            <div className="bg-[#F5F6F7] pt-8 pb-6 px-4 md:p-10 lg:px-26 py-20">
+                <h1 className="font-slab text-3xl mb-4 w-72 md:mb-8 lg:mb-16">Search results</h1>
+                <p className="font-roboto text-lg text-red-600">{error}</p>
+            </div>
+        );
+    }
+
+    // Show nothing found
+    if (articles.length === 0) {
+        return (
+            <div className="bg-[#F5F6F7] pt-8 pb-6 px-4 md:p-10 lg:px-26 py-20">
+                <h1 className="font-slab text-3xl mb-4 w-72 md:mb-8 lg:mb-16">Search results</h1>
+                <SearchFail />
+            </div>
+        );
+    }
+
+    const visibleArticles = articles.slice(0, visibleCount);
+    const showMoreVisible = visibleCount < articles.length;
 
     return (
         <div className="bg-[#F5F6F7] pt-8 pb-6 px-4 md:p-10 lg:px-26 py-20">
@@ -70,22 +64,33 @@ export default function SearchResults({ isSignedIn = false }) {
                 md:w-fit md:mx-auto
                 lg:gap-4
             ">
-                {newsArticles.map((article) => (
+                {visibleArticles.map((article) => (
                     <NewsCard
-                        key={article.id}
-                        image={article.image}
-                        tag={article.tag}
-                        date={article.date}
-                        headlines={article.headlines}
+                        key={article.url}
+                        article={article}
+                        date={formatDate(article.publishedAt)}
+                        source={article.source.name}
+                        title={article.title}
                         description={article.description}
-                        source={article.source}
+                        image={article.urlToImage}
                         variant="search"
-                        isSignedIn={isSignedIn}
+                        isLoggedIn={isLoggedIn}
+                        isSaved={savedArticles.some(a => a.url === article.url)}
+                        onSave={onSave}
+                        onDelete={onDelete}
                     />
                 ))}
             </div>
 
-            <Button variant="white" className="mt-5 w-72 h-14 mx-auto md:w-60 md:mt-8" >Show more</Button>
+            {showMoreVisible && (
+                <Button 
+                    variant="white" 
+                    className="mt-5 w-72 h-14 mx-auto md:w-60 md:mt-8"
+                    onClick={onShowMore}
+                >
+                    Show more
+                </Button>
+            )}
         </div>
     )
 }
