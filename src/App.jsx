@@ -7,6 +7,7 @@ import SignUpModal from '../components/Modal/SignUpModal';
 import SignUpCompleteModal from '../components/Modal/SignUpCompleteModal';
 import Footer from '../components/Footer/Footer';
 import SavedNews from '../components/SavedNews/SavedNews';
+import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
 import Home from '../pages/Home';
 import { searchNews } from './utils/newsApi';
 import { authApi, articlesApi } from './utils/api';
@@ -120,6 +121,13 @@ function App() {
             }));
         });
     }, [backendSavedArticles]);
+
+    // Clear saved articles when user logs out
+    useEffect(() => {
+        if (!isLoggedIn) {
+            setBackendSavedArticles([]);
+        }
+    }, [isLoggedIn]);
 
     const handleSearch = (keyword) => {
         if (!keyword.trim()) {
@@ -254,10 +262,21 @@ function App() {
                 onSignIn={handleOpenSignIn}
                 onLogout={handleLogout}
             />
-            <SignInModal isOpen={open} onClose={() => setOpen("")} onSignInSuccess={(newUsername) => {
+            <SignInModal isOpen={open} onClose={() => setOpen("")} onSignInSuccess={async (newUsername) => {
                 setUsername(newUsername)
                 setIsLoggedIn(true)
                 setOpen("")
+                
+                // Fetch saved articles for the newly logged-in user
+                try {
+                    const token = localStorage.getItem("token");
+                    if (token) {
+                        const saved = await articlesApi.getSavedArticles(token);
+                        setBackendSavedArticles(saved);
+                    }
+                } catch (err) {
+                    console.error("Error fetching saved articles after login:", err);
+                }
             }} />
             <SignUpModal isOpen={open} onClose={() => setOpen("")} onSignUpSuccess={() => {
                 setOpen("")
@@ -287,7 +306,11 @@ function App() {
                             />
                         }
                     />
-                    <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} onArticleDeleted={handleArticleDeleted} />} />
+                    <Route path="/saved-news" element={
+                        <ProtectedRoute isLoggedIn={isLoggedIn} isCheckingAuth={_isCheckingAuth}>
+                            <SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} onArticleDeleted={handleArticleDeleted} />
+                        </ProtectedRoute>
+                    } />
                 </Routes>
             </div>
 

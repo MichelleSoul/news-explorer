@@ -1,4 +1,3 @@
-import { useState } from "react";
 import CardsAction from "./CardsAction.jsx";
 
 export default function NewsCard({
@@ -15,15 +14,11 @@ export default function NewsCard({
     onSave = () => {},
     onDelete = () => {},
 }) {
-    const [bookmarked, setBookmarked] = useState(isSaved);
-
     const handleToggle = () => {
-        if (bookmarked) {
+        if (isSaved) {
             onDelete(article);
-            setBookmarked(false);
         } else {
             onSave(article);
-            setBookmarked(true);
         }
     };
 
@@ -72,7 +67,7 @@ export default function NewsCard({
             ">
                 <CardsAction
                     variant={variant}
-                    bookmarked={bookmarked}
+                    bookmarked={isSaved}
                     onToggle={handleToggle}
                     isLoggedIn={isLoggedIn}
                 />

@@ -1,4 +1,9 @@
-const API_BASE_URL = 'http://localhost:3001';
+const isProd = import.meta.env.VITE_APP_ENV === "production";
+
+const API_BASE_URL =
+  isProd
+    ? "https://api.michellenews.soon.it"
+    : 'http://localhost:3001'
 
 // Helper to handle response and extract actual error message
 const handleResponse = async (response) => {
