@@ -5,7 +5,10 @@ import Image3 from "@/assets/images/news/image_05.png";
 import Image4 from "@/assets/images/news/image_07.png";
 import Image5 from "@/assets/images/news/image_01.png";
 
-export default function SavedNews() {
+export default function SavedNews({ setHeader, setRoute }) {
+    setHeader("white");
+    setRoute("saved");
+    
     const newsArticles = [
         {
             id: 1,

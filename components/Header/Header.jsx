@@ -3,11 +3,11 @@ import Button from "../Button/Button";
 import MenuIcon from "../Icon/MenuIcon";
 import LogoutIcon from "../Icon/LogoutIcon"
 import { useState } from "react";
+import { NavLink } from 'react-router-dom'
 
-export default function Header({ variant }) {
+export default function Header({ variant, route }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSignedIn, _setIsSignedIn] = useState(false);
-    const [route, _setRoute] = useState("home");
 
     const headerBgClass = cn(
         // mobile behavior
@@ -85,13 +85,13 @@ export default function Header({ variant }) {
                         headerBgClass
                     )}
                 >
-                    <span className={cn(
+                    <NavLink to="/" className={cn(
                         "font-slab text-base font-bold md:text-xl transition-colors duration-300",
                         mobileTextColor,
                         desktopTextColor
                     )}>
                         NewsExplorer
-                    </span>
+                    </NavLink>
                     <button
                         className="flex items-center justify-center md:hidden"
                         onClick={() => setMenuOpen((prev) => !prev)}
@@ -100,14 +100,14 @@ export default function Header({ variant }) {
                     </button>
                     <div className="hidden md:flex flex-row items-center gap-8 h-full">
                         {/* Home */}
-                        <div className={cn(navItemBase(variant), "w-17", route === "home" && activeUnderline(variant))}>
+                        <NavLink to="/" className={cn(navItemBase(variant), "w-17", route === "home" && activeUnderline(variant))}>
                             Home
-                        </div>
+                        </NavLink>
                         {/* Saved articles */}
                         {isSignedIn && (
-                            <div className={cn(navItemBase(variant), "w-44.5", route === "saved" && activeUnderline(variant))}>
+                            <NavLink to="/saved-news" className={cn(navItemBase(variant), "w-44.5", route === "saved" && activeUnderline(variant))}>
                                 Saved articles
-                            </div>
+                            </NavLink>
                         )}
                         <Button
                             variant={navButtonVariant(variant)}

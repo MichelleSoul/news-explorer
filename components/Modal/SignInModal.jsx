@@ -3,7 +3,7 @@ import Modal from "./Modal";
 
 export default function SignInModal({ isOpen, onClose }) {
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen === "signin"} onClose={onClose}>
             <div>
                 <h1 className="mb-4.5 font-roboto text-2xl font-black text-black">
                     Sign In
@@ -43,6 +43,7 @@ export default function SignInModal({ isOpen, onClose }) {
                     <input
                         id="password"
                         type="password"
+                        autoComplete="current-password"
                         placeholder="Enter password"
                         className="w-full bg-transparent border-0 border-b border-black/20 px-0 py-2 font-inter text-sm outline-none focus:border-[#2F71E5]"
                         required

@@ -3,7 +3,7 @@ import Modal from "./Modal";
 
 export default function SignUpCompleteModal({ isOpen, onClose }) {
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen === "complete"} onClose={onClose}>
             <div>
                 <h1 className="mb-4.5 font-roboto text-2xl font-black text-black">
                     Registration successfully completed!

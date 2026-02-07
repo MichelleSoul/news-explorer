@@ -1,22 +1,31 @@
 import './App.css'
 import { useState } from "react";
+import { Routes, Route } from 'react-router-dom'
 import Header from '../components/Header/Header';
+import SignInModal from '../components/Modal/SignInModal';
 import SignUpModal from '../components/Modal/SignUpModal';
-import Hero from '../components/Hero/Hero';
-import Author from '../components/Author/Author';
+import SignUpCompleteModal from '../components/Modal/SignUpCompleteModal';
 import Footer from '../components/Footer/Footer';
-import SearchResults from '../components/SearchResults/SearchResults';
-import SearchLoad from '../components/SearchLoad/SearchLoad';
 import SavedNews from '../components/SavedNews/SavedNews';
+import Home from '../pages/Home';
 
 function App() {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState("");
+    const [headerVariant, setHeaderVariant] = useState("");
+    const [route, setRoute] = useState("");
 
     return (
         <>
-            <Header variant="white" />
-            <SignUpModal isOpen={open} onClose={() => setOpen(false)} />
-            <SavedNews />
+            <Header variant={headerVariant} route={route} />
+            <SignInModal isOpen={open} onClose={() => setOpen("")} />
+            <SignUpModal isOpen={open} onClose={() => setOpen("")} />
+            <SignUpCompleteModal isOpen={open} onClose={() => setOpen("")} />
+
+            <Routes>
+                <Route path="/" element={<Home setHeader={setHeaderVariant} setRoute={setRoute} />} />
+                <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} />} />
+            </Routes>
+
             <Footer />
         </>
     )

@@ -1,9 +1,10 @@
+import { forwardRef } from "react";
 import Button from "../Button/Button";
 import HeroImage from "@/assets/images/hero.png";
 
-export default function Hero() {
+const Hero = forwardRef((props, ref) => {
     return (
-        <>
+        <section ref={ref}>
             <div className="
                     bg-gray-500 bg-cover bg-center bg-blend-multiply
                     pt-21.5 pb-8 px-4
@@ -33,6 +34,8 @@ export default function Hero() {
                 </form>
             </div>
 
-        </>
+        </section>
     )
-}
+})
+
+export default Hero;
