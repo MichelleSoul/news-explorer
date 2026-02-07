@@ -1,7 +1,12 @@
 import Button from "../Button/Button";
 import Modal from "./Modal";
 
-export default function SignUpCompleteModal({ isOpen, onClose }) {
+export default function SignUpCompleteModal({ isOpen, onClose, onSignInClick = () => {} }) {
+    const handleSignInClick = () => {
+        onClose();
+        onSignInClick();
+    };
+
     return (
         <Modal isOpen={isOpen === "complete"} onClose={onClose}>
             <div>
@@ -9,7 +14,10 @@ export default function SignUpCompleteModal({ isOpen, onClose }) {
                     Registration successfully completed!
                 </h1>
             </div>
-            <div className="font-inter text-sm text-[#2F71E5] hover:underline cursor-pointer">
+            <div 
+                className="font-inter text-sm text-[#2F71E5] hover:underline cursor-pointer"
+                onClick={handleSignInClick}
+            >
                 Sign In
             </div>
         </Modal>

@@ -5,7 +5,7 @@ import LogoutIcon from "../Icon/LogoutIcon"
 import { useState } from "react";
 import { NavLink } from 'react-router-dom'
 
-export default function Header({ variant, route, isLoggedIn = false, onSignIn = () => {}, onLogout = () => {} }) {
+export default function Header({ variant, route, isLoggedIn = false, username = "", onSignIn = () => {}, onLogout = () => {} }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const headerBgClass = cn(
@@ -118,7 +118,7 @@ export default function Header({ variant, route, isLoggedIn = false, onSignIn = 
                         >
                             {isLoggedIn ? (
                                 <>
-                                    Elise
+                                    {username}
                                     <LogoutIcon variant={navButtonIconVariant(variant)} />
                                 </>
                             ) : (
@@ -138,7 +138,7 @@ export default function Header({ variant, route, isLoggedIn = false, onSignIn = 
                     <Button variant="outline" className="font-roboto flex items-center justify-center gap-3.75" onClick={isLoggedIn ? onLogout : onSignIn}>
                         {isLoggedIn ? (
                             <>
-                                Elise
+                                {username}
                                 <LogoutIcon variant="white" />
                             </>
                         ) : (
