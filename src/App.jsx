@@ -182,7 +182,7 @@ function App() {
                         />
                     }
                 />
-                <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} />} />
+                <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} />} />
             </Routes>
 
             <Footer />

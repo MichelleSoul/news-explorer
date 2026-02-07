@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardsAction from "./CardsAction.jsx";
 
 export default function NewsCard({
+    tag = "",
     article,
     image,
     date,
@@ -42,6 +43,23 @@ export default function NewsCard({
                     object-cover object-center
                 "
             />
+            {/* Tag */}
+            {
+                variant === "saved" && tag !== "" &&
+                <div className="
+                    absolute top-4 left-4
+                    rounded-xl
+                    flex items-center justify-center
+                    w-fit h-10 px-5
+                    bg-white font-roboto font-medium text-sm
+
+                    md:top-2 md:left-2
+                    lg:top-4 lg:left-4
+                    xl:top-6 xl:left-6
+                ">
+                    {tag}
+                </div>
+            }
             {/* Action Button */}
             <div className="
                 absolute top-4 right-4
