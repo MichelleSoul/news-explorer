@@ -14,7 +14,6 @@ export default function Home({
     visibleCount,
     onShowMore,
     isLoggedIn,
-    savedArticles,
     onSave,
     onDelete,
 }) {
@@ -57,7 +56,6 @@ export default function Home({
                 isLoading={isLoading}
                 error={error}
                 isLoggedIn={isLoggedIn}
-                savedArticles={savedArticles}
                 onSave={onSave}
                 onDelete={onDelete}
             />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NewsCard from "../NewsCard/NewsCard";
+import { articlesApi } from "@/utils/api";
 
 export default function SavedNews({ setHeader, setRoute, username }) {
     setHeader("white");
@@ -51,13 +52,21 @@ export default function SavedNews({ setHeader, setRoute, username }) {
         });
     };
 
-    const onSave = (article) => {
-        // TODO: Implement save functionality
-    };
+    const onDelete = async (article) => {
+        const token = localStorage.getItem("token");
+        if (!token) return;
 
-    const onDelete = (article) => {
-        // TODO: Implement delete functionality
-        setNewsArticles(newsArticles.filter(a => a._id !== article._id));
+        try {
+            // Optimistically update UI
+            setNewsArticles(newsArticles.filter(a => a._id !== article._id));
+
+            // Call backend API to delete article
+            await articlesApi.deleteArticle(token, article._id);
+        } catch (err) {
+            console.error("Error deleting article:", err);
+            // Revert on error
+            setNewsArticles(prev => [...prev, article]);
+        }
     };
 
     return (
@@ -107,7 +116,6 @@ export default function SavedNews({ setHeader, setRoute, username }) {
                                 variant="saved"
                                 isLoggedIn
                                 isSaved={true}
-                                onSave={onSave}
                                 onDelete={onDelete}
                             />
                         ))}

@@ -12,7 +12,6 @@ export default function SearchResults({
     isLoading = false,
     error = "",
     isLoggedIn = false,
-    savedArticles = [],
     onSave = () => {},
     onDelete = () => {},
 }) {
@@ -75,7 +74,7 @@ export default function SearchResults({
                         image={article.urlToImage}
                         variant="search"
                         isLoggedIn={isLoggedIn}
-                        isSaved={savedArticles.some(a => a.url === article.url)}
+                        isSaved={article.isSaved}
                         onSave={onSave}
                         onDelete={onDelete}
                     />
