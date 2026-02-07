@@ -225,7 +225,7 @@ function App() {
     }
 
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <Header
                 variant={headerVariant}
                 route={route}
@@ -246,31 +246,33 @@ function App() {
                 setOpen("signin")
             }} />
 
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <Home
-                            setHeader={setHeaderVariant}
-                            setRoute={setRoute}
-                            onSearch={handleSearch}
-                            articles={mergedArticles}
-                            isLoading={isLoading}
-                            error={error}
-                            hasSearched={hasSearched}
-                            visibleCount={visibleCount}
-                            onShowMore={() => setVisibleCount(v => v + 3)}
-                            isLoggedIn={isLoggedIn}
-                            onSave={handleSave}
-                            onDelete={handleDelete}
-                        />
-                    }
-                />
-                <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} />} />
-            </Routes>
+            <div className="flex-1">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <Home
+                                setHeader={setHeaderVariant}
+                                setRoute={setRoute}
+                                onSearch={handleSearch}
+                                articles={mergedArticles}
+                                isLoading={isLoading}
+                                error={error}
+                                hasSearched={hasSearched}
+                                visibleCount={visibleCount}
+                                onShowMore={() => setVisibleCount(v => v + 3)}
+                                isLoggedIn={isLoggedIn}
+                                onSave={handleSave}
+                                onDelete={handleDelete}
+                            />
+                        }
+                    />
+                    <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} />} />
+                </Routes>
+            </div>
 
             <Footer />
-        </>
+        </div>
     )
 }
 
