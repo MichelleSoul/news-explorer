@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import { articlesApi } from "@/utils/api";
 
-export default function SavedNews({ setHeader, setRoute, username }) {
+export default function SavedNews({ setHeader, setRoute, username, onArticleDeleted = () => {} }) {
     setHeader("white");
     setRoute("saved");
     
@@ -62,6 +62,9 @@ export default function SavedNews({ setHeader, setRoute, username }) {
 
             // Call backend API to delete article
             await articlesApi.deleteArticle(token, article._id);
+            
+            // Notify parent component (App) so it can update saved articles state
+            onArticleDeleted(article._id);
         } catch (err) {
             console.error("Error deleting article:", err);
             // Revert on error

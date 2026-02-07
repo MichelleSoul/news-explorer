@@ -107,6 +107,20 @@ function App() {
         }));
     };
 
+    // Remerge articles when backend saved articles change (to reflect deleted articles)
+    useEffect(() => {
+        setMergedArticles(prev => {
+            // Only remerge if there are current search results
+            if (prev.length === 0) return prev;
+            
+            return prev.map(article => ({
+                ...article,
+                isSaved: backendSavedArticles.some(s => s.url === article.url),
+                savedId: backendSavedArticles.find(s => s.url === article.url)?._id || null,
+            }));
+        });
+    }, [backendSavedArticles]);
+
     const handleSearch = (keyword) => {
         if (!keyword.trim()) {
             setError("Please enter a keyword")
@@ -224,6 +238,12 @@ function App() {
         setUsername("")
     }
 
+    const handleArticleDeleted = (articleId) => {
+        setBackendSavedArticles(prev =>
+            prev.filter(a => a._id !== articleId)
+        );
+    }
+
     return (
         <div className="flex flex-col min-h-screen">
             <Header
@@ -267,7 +287,7 @@ function App() {
                             />
                         }
                     />
-                    <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} />} />
+                    <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} username={username} onArticleDeleted={handleArticleDeleted} />} />
                 </Routes>
             </div>
 
