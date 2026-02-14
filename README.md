@@ -34,3 +34,8 @@ NewsExplorer is a responsive full-stack web application that allows users to sea
  
  Check out [this video](https://drive.google.com/file/d/1GucA9P0d53jStla8Zp6OlguvpFZtv-Ui/view?usp=drive_link), where I describe my 
  project and some challenges I faced while building it.
+ 
+ ## Website
+ https://michellenews.soon.it
+ 
+ 
