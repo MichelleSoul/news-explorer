@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import Button from "../Button/Button";
-import HeroImage from "@/assets/images/hero.png";
+import HeroImage from "@/assets/images/hero.webp";
 
 const Hero = forwardRef((props, ref) => {
     const { onSearch = () => {}, error = "" } = props;
@@ -42,5 +42,6 @@ const Hero = forwardRef((props, ref) => {
         </section>
     )
 })
+
 
 export default Hero;
