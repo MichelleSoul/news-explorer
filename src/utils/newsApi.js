@@ -1,9 +1,7 @@
-const isProd = import.meta.env.VITE_APP_ENV === "production";
-
 const newsApiBaseUrl =
-  isProd
+  import.meta.env.PROD
     ? "https://nomoreparties.co/news/v2/everything"
-    : "https://newsapi.org/v2/everything"
+    : "https://newsapi.org/v2/everything";
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY
 
@@ -43,3 +41,4 @@ export function formatDate(date) {
     day: "numeric",
   })
 }
+
