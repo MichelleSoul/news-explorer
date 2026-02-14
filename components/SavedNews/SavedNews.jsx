@@ -1,9 +1,9 @@
 import NewsCard from "../NewsCard/NewsCard";
-import Image1 from "@/assets/images/news/image_08.png";
-import Image2 from "@/assets/images/news/image_06.png";
-import Image3 from "@/assets/images/news/image_05.png";
-import Image4 from "@/assets/images/news/image_07.png";
-import Image5 from "@/assets/images/news/image_01.png";
+import Image1 from "@/assets/images/news/image_08.webp";
+import Image2 from "@/assets/images/news/image_06.webp";
+import Image3 from "@/assets/images/news/image_05.webp";
+import Image4 from "@/assets/images/news/image_07.webp";
+import Image5 from "@/assets/images/news/image_01.webp";
 
 export default function SavedNews({ setHeader, setRoute }) {
     setHeader("white");
@@ -95,4 +95,5 @@ export default function SavedNews({ setHeader, setRoute }) {
             </div>
         </>
     )
+
 }
