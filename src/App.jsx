@@ -1,13 +1,13 @@
 import './App.css'
 import { useState } from "react";
 import { Routes, Route } from 'react-router-dom'
-import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
-import Header from '../components/Header/Header';
-import SignInModal from '../components/Modal/SignInModal';
-import SignUpModal from '../components/Modal/SignUpModal';
-import SignUpCompleteModal from '../components/Modal/SignUpCompleteModal';
-import Footer from '../components/Footer/Footer';
-import SavedNews from '../components/SavedNews/SavedNews';
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
+import Header from '@/components/Header/Header';
+import SignInModal from '@/components/Modal/SignInModal';
+import SignUpModal from '@/components/Modal/SignUpModal';
+import SignUpCompleteModal from '@/components/Modal/SignUpCompleteModal';
+import Footer from '@/components/Footer/Footer';
+import SavedNews from '@/components/SavedNews/SavedNews';
 import Home from '../pages/Home';
 import { searchNews } from './utils/newsApi';
 

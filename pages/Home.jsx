@@ -1,6 +1,6 @@
-import Hero from '../components/Hero/Hero';
-import Author from '../components/Author/Author';
-import SearchResults from '../components/SearchResults/SearchResults';
+import Hero from '@/components/Hero/Hero';
+import Author from '@/components/Author/Author';
+import SearchResults from '@/components/SearchResults/SearchResults';
 import { useEffect, useRef } from 'react'
 
 export default function Home({ 
