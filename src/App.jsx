@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from "react";
 import { Routes, Route } from 'react-router-dom'
+import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
 import Header from '../components/Header/Header';
 import SignInModal from '../components/Modal/SignInModal';
 import SignUpModal from '../components/Modal/SignUpModal';
@@ -83,11 +84,11 @@ function App() {
             <SignUpCompleteModal isOpen={open} onClose={() => setOpen("")} />
 
             <Routes>
-                <Route 
-                    path="/" 
+                <Route
+                    path="/"
                     element={
-                        <Home 
-                            setHeader={setHeaderVariant} 
+                        <Home
+                            setHeader={setHeaderVariant}
                             setRoute={setRoute}
                             onSearch={handleSearch}
                             articles={articles}
@@ -101,9 +102,14 @@ function App() {
                             onSave={handleSave}
                             onDelete={handleDelete}
                         />
-                    } 
+                    }
                 />
-                <Route path="/saved-news" element={<SavedNews setHeader={setHeaderVariant} setRoute={setRoute} />} />
+                
+                <Route path="/saved-news" element={
+                    <ProtectedRoute isLoggedIn={isLoggedIn} >
+                        <SavedNews setHeader={setHeaderVariant} setRoute={setRoute} />
+                    </ProtectedRoute>
+                } />
             </Routes>
 
             <Footer />
