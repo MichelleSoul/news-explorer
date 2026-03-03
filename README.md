@@ -1,16 +1,41 @@
-# React + Vite
+ # NewsExplorer — Personalized News Search & Bookmarking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NewsExplorer is a responsive full-stack web application that allows users to search for real-time news articles, save their favorite stories, and manage their personal news collection. The app integrates with a public news API to fetch live headlines and provides secure authentication for saving and deleting articles.
 
-Currently, two official plugins are available:
+## Features Implemented
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* User authentication system (Sign up, Sign in, Sign out)
+* JWT-based protected routes
+* Real-time news search via external News API
+* Keyword-based article filtering
+* Display of news cards with title, image, source, and publish date
+* Save articles to personal account
+* View saved articles on a dedicated profile page
+* Delete saved articles
+* Responsive design across mobile, tablet, and desktop viewports
+* Navigation menu with conditional rendering based on login state
+* Confirmation popups and UI feedback for user actions
 
-## React Compiler
+## Technologies and Techniques Used
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+* **React** — Component-based frontend architecture
+* **Vite** — Fast development server and optimized build tooling
+* **Node.js & Express** — REST API backend
+* **MongoDB** — Database for storing users and saved articles
+* **JWT Authentication** — Secure user session handling
+* **Bcrypt** — Password hashing
+* **CSS (Responsive Design)** — Mobile-first adaptive layout
+* **React Hooks** — useState, useEffect, and custom hooks
+* **RESTful API Architecture** — Structured backend endpoints
+* **Environment Variables** — Secure handling of API keys and secrets
+* **PM2 & Nginx (Production Deployment)** — Process management and reverse proxy setup
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ ## Project Pitch Video
+ 
+ Check out [this video](https://drive.google.com/file/d/1GucA9P0d53jStla8Zp6OlguvpFZtv-Ui/view?usp=drive_link), where I describe my 
+ project and some challenges I faced while building it.
+ 
+ ## Website
+ https://michellenews.soon.it
+ 
+ 
